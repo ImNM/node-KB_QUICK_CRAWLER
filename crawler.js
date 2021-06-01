@@ -20,7 +20,7 @@ require("dotenv").config();
 let button = []; // top, left, center , right , bottom 계속 바뀌게 되는 버튼 5개
 const KB_QUICK_URL =
   "https://obank.kbstar.com/quics?page=C025255&cc=b028364:b028702#loading";
-const HEADLESS = false;
+const HEADLESS = true;
 const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
 
 console.log("startiong...");
@@ -88,6 +88,7 @@ console.log("startiong...");
       console.log("check6...");
       var worker = createWorker();
       (async () => {
+        console.log("check99...");
         await worker.load();
         await worker.loadLanguage("eng");
         await worker.initialize("eng");
