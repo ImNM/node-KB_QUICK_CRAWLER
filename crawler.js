@@ -35,7 +35,7 @@ console.log("startiong...");
   await page.setUserAgent(
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/91.0.4469.0 Safari/537.36"
   );
-  console.log(await page.userAgent());
+  console.log(await browser.userAgent());
   await page.goto(KB_QUICK_URL, {
     waitUntil: "load",
     timeout: 10000,
