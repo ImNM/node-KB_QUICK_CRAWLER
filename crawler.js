@@ -20,7 +20,7 @@ require("dotenv").config();
 let button = []; // top, left, center , right , bottom 계속 바뀌게 되는 버튼 5개
 const KB_QUICK_URL =
   "https://obank.kbstar.com/quics?page=C025255&cc=b028364:b028702#loading";
-const HEADLESS = true;
+const HEADLESS = false;
 const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
 
 console.log("startiong...");
@@ -39,6 +39,7 @@ console.log("startiong...");
   //비밀번호 input tag click 이벤트로 가상키보드 func 실행
   await page.evaluate(() => document.getElementById("비밀번호").click());
 
+  console.log("check3...");
   let imgurl; //가상키보드 이미지 url 태그검색 - 페이지 리로딩마다 동적으로 바뀜
   await page
     .evaluate(() => {
@@ -46,6 +47,7 @@ console.log("startiong...");
       return imgurl;
     })
     .then(async (imgurl) => {
+      console.log("check4...");
       //키보드 이미지로 새창을 열어서 이동
       const page2 = await browser.newPage();
       await page2.goto(imgurl);
@@ -61,6 +63,7 @@ console.log("startiong...");
           type: "png",
         })
         .then(async () => {
+          console.log("check5...");
           //이미지 추출 과정
           page2.close();
           await sharp(PATH_KEYBOARD_IMG)
@@ -82,6 +85,7 @@ console.log("startiong...");
     })
     .then(() => {
       // 추출된 이미지 인식
+      console.log("check6...");
       var worker = createWorker();
       (async () => {
         await worker.load();
@@ -120,6 +124,7 @@ console.log("startiong...");
         return button;
       })().then(async (button) => {
         //input 태그들에 값을 입력하는 부분
+        console.log("check7...");
         const password = process.env.KB_ACCOUNT_PASSWORD;
         const accountAddress = process.env.KB_ACCOUNT_NUMBER;
         const accountId = process.env.KB_ACCOUNT_ID;
