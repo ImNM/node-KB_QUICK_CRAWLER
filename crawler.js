@@ -13,6 +13,7 @@
 
 */
 const puppeteer = require("puppeteer");
+const path = require("path");
 const { createWorker } = require("tesseract.js"); //이미지 광학 인식
 const sharp = require("sharp"); //이미지 자르기
 require("dotenv").config();
@@ -87,6 +88,7 @@ console.log("startiong...");
       // 추출된 이미지 인식
       console.log("check6...");
       var worker = createWorker({
+        langPath: path.join(__dirname, "."),
         logger: (m) => console.log(m),
       });
       (async () => {
