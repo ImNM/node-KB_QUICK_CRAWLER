@@ -23,6 +23,7 @@ const KB_QUICK_URL =
 const HEADLESS = true;
 const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
 
+console.log("startiong...");
 (async () => {
   const browser = await puppeteer.launch({
     args: ["--disable-web-security"],
@@ -161,6 +162,7 @@ const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
           accountAddress,
           accountId
         );
+        console.log("check");
         let testnum = 0;
         //testnum =
         await page.waitFor(5000);
@@ -183,8 +185,11 @@ const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
         // });
         console.log(value);
         browser.close();
+        console.log("asdf...");
       });
     });
 })();
+
+console.log("Ending...");
 
 //await page.waitForFunction('document.querySelector(".count").inner‌​Text.length == 7');
