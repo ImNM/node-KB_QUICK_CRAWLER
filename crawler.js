@@ -31,12 +31,15 @@ console.log("startiong...");
     headless: HEADLESS,
   }); //개발모드  false
   const page = await browser.newPage();
-  console.log(await browser.userAgent());
+
+  await page.setUserAgent(
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/91.0.4469.0 Safari/537.36"
+  );
+  console.log(await page.userAgent());
   await page.goto(KB_QUICK_URL, {
     waitUntil: "load",
     timeout: 10000,
   });
-
   console.log("check2...");
   //비밀번호 input tag click 이벤트로 가상키보드 func 실행
   await page.evaluate(() => document.getElementById("비밀번호").click());
