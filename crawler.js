@@ -30,12 +30,15 @@ console.log("startiong...");
     args: ["--disable-web-security"],
     headless: HEADLESS,
   }); //개발모드  false
+  // await browser.userAgent(
+  //   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
+  // );
   const page = await browser.newPage();
-
-  await browser.userAgent(
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
+  page.setUserAgent(
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4182.0 Safari/537.36"
   );
-  console.log(await browser.userAgent());
+
+  console.log(await page.evaluate("navigator.userAgent"));
   await page.goto(KB_QUICK_URL, {
     waitUntil: "load",
     timeout: 10000,
