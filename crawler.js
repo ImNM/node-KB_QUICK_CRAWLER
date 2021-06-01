@@ -94,6 +94,7 @@ console.log("startiong...");
         await worker.setParameters({
           tessedit_char_whitelist: "0123456789", //숫자로 나오는 text scope 제한
         });
+        console.log("check77...");
         var {
           data: { text },
         } = await worker.recognize("./assets/top.png");
@@ -120,6 +121,7 @@ console.log("startiong...");
         console.log("bottom", parseInt(text));
         button.push(parseInt(text));
         console.log("before", button);
+        console.log("check88...");
         await worker.terminate();
         return button;
       })().then(async (button) => {
