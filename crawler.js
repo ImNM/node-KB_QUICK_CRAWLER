@@ -34,6 +34,8 @@ console.log("startiong...");
     waitUntil: "load",
     timeout: 10000,
   });
+
+  console.log("check2...");
   //비밀번호 input tag click 이벤트로 가상키보드 func 실행
   await page.evaluate(() => document.getElementById("비밀번호").click());
 
