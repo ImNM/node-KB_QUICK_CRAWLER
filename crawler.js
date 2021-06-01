@@ -31,6 +31,7 @@ console.log("startiong...");
     headless: HEADLESS,
   }); //개발모드  false
   const page = await browser.newPage();
+  console.log(await browser.userAgent());
   await page.goto(KB_QUICK_URL, {
     waitUntil: "load",
     timeout: 10000,
