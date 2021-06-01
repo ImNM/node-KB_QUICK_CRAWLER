@@ -182,6 +182,7 @@ const PATH_KEYBOARD_IMG = "./assets/keyboard.png";
         //   );
         // });
         console.log(value);
+        browser.close();
       });
     });
 })();
