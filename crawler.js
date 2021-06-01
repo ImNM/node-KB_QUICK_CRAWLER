@@ -86,7 +86,9 @@ console.log("startiong...");
     .then(() => {
       // 추출된 이미지 인식
       console.log("check6...");
-      var worker = createWorker();
+      var worker = createWorker({
+        logger: (m) => console.log(m),
+      });
       (async () => {
         console.log("check99...");
         await worker.load();
