@@ -152,23 +152,35 @@ console.log("startiong...");
         // top : areaindex:5, left:areaindex:8, center:areaindex:9 , right:areaindex:10 , bottom:areaindex:12
 
         console.log(inpumNumber, "num");
-        await page.evaluate(
-          (inpumNumber, accountAddress, accountId) => {
-            document.querySelector("#account_num").value = accountAddress;
-            for (var i = 0; i < 4; i++) {
-              document.querySelector("map").areas[inpumNumber[i]].onmousedown();
-            }
-            document.querySelector("#user_id").value = accountId.toUpperCase();
+        try {
+          await page.evaluate(
+            (inpumNumber, accountAddress, accountId) => {
+              document.querySelector("#account_num").value = accountAddress;
+              for (var i = 0; i < 4; i++) {
+                document
+                  .querySelector("map")
+                  .areas[inpumNumber[i]].onmousedown();
+              }
+              document.querySelector("#user_id").value =
+                accountId.toUpperCase();
+            },
+            inpumNumber,
+            accountAddress,
+            accountId
+          );
+          console.log("check8...");
+          await page.evaluate(() => {
             document
               .querySelector(
                 "#pop_contents > div.btnArea > span > input[type=button]"
               )
               .click();
-          },
-          inpumNumber,
-          accountAddress,
-          accountId
-        );
+          });
+        } catch (err) {
+          console.log(err);
+          browser.close();
+        }
+
         console.log("check");
         let testnum = 0;
         //testnum =
